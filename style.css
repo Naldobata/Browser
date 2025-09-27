@@ -9,7 +9,7 @@ body {
   background-color: hsl(217, 61%, 90%);
 }
 
-body.claro{
+body.claro {
   background-color: black;
   color: white;
 }
@@ -35,13 +35,17 @@ header {
   padding: 7px;
 }
 
-.content.preto{
+.content.preto {
   background-color: black;
   color: white;
 }
 main {
   width: 85%;
   margin: auto;
+  margin-left: 2px;
+  max-width: 1200px;
+  min-width: 750px;
+  margin-right: 2px;
 }
 .header {
   margin-top: 40px;
@@ -87,13 +91,13 @@ main {
   justify-content: space-between;
   margin-bottom: 0;
 }
-h2{
+h2 {
   margin: 0;
 }
-p{
+p {
   margin: 5px;
 }
-.remove{
+.remove {
   border-radius: 15px;
   border: 1px solid hsl(0, 0%, 78%);
   padding: 5px 10px 5px 10px;
@@ -102,8 +106,8 @@ p{
 .switch {
   position: relative;
   display: inline-block;
-  width: 42px;   /* largura do botão */
-  height: 22px;  /* altura do botão */
+  width: 42px; /* largura do botão */
+  height: 22px; /* altura do botão */
 }
 
 /* Esconde o input */
@@ -121,7 +125,7 @@ p{
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;  /* cinza quando desligado */
+  background-color: #ccc; /* cinza quando desligado */
   transition: 0.3s;
   border-radius: 22px;
 }
@@ -148,4 +152,3 @@ p{
 .switch input:checked + .slider:before {
   transform: translateX(20px);
 }
-
