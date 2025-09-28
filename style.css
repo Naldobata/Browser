@@ -1,136 +1,239 @@
 @charset "UTF-8";
+
+/* Fonte */
 @font-face {
   font-family: buceta;
   src: url("fontes/NotoSans-Bold.ttf") format("truetype");
 }
+
 body {
   margin: 0;
   padding: 0;
-  background-color: hsl(217, 61%, 90%);
-}
-
-body.claro {
-  background-color: black;
-  color: white;
-}
-.body {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-template-rows: auto auto auto auto;
-}
-header {
-  background-color: hsl(200, 60%, 99%);
-  width: 85%;
-  margin: auto;
-  margin-top: 20px;
-  border-radius: 10px;
-  padding: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.moon {
-  background-color: hsl(0, 0%, 78%);
-  border-radius: 10px;
-  padding: 7px;
-}
-
-.content.preto {
-  background-color: black;
-  color: white;
-}
-main {
-  width: 85%;
-  margin: auto;
-  margin-left: 2px;
-  max-width: 1200px;
-  min-width: 750px;
-  margin-right: 2px;
-}
-.header {
-  margin-top: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 85%;
-}
-.button {
-  display: flex;
+  font-family: "Noto Sans", sans-serif;
+  background-image: linear-gradient(180deg, hsl(217, 61%, 90%), hsl(217, 61%, 80%));
+  color: hsl(210, 15%, 20%);
 }
 .button > div {
-  margin-left: 10px;
+  border-radius: 15px;
+  border: 1px solid hsl(0, 0%, 78%);
+  padding: 5px 12px;
+  background: white;
+  cursor: pointer;
+  background-color: hsl(200, 60%, 99%);
+  margin-left: 5px;
+}
+/* Tema Escuro */
+body.dark {
+  background-image: linear-gradient(180deg, #040918 0%, #091540 100%);
+  color: white;
+}
+
+
+body.dark .content {
+  background-color: hsl(226, 25%, 17%); /* cards ficam escuros */
+  color: white;
+  border: 1px solid hsl(226, 11%, 37%);
+}
+
+body.dark header {
+  background-color: hsl(226, 25%, 17%);
+}
+
+body.dark .button button {
+  background-color: hsl(226, 25%, 17%);
+  color: white;
+  border-color: #555;
+}
+
+body.dark .button button.active {
+  background-color: hsl(3, 77%, 44%);
+  border: 1px solid hsl(3, 77%, 44%);
+}
+body.dark .remove {
+  background-color: hsl(226, 25%, 17%);
+  color: white;
+  border-color: #555;
+}
+body.dark .remove:hover {
+  background-color: hsl(3, 71%, 56%);
+  color: hsl(227, 75%, 14%);
+  border-color: hsl(3, 71%, 56%);
+}
+body.dark .button > div {
+  background-color: hsl(226, 25%, 17%);
+  color: white;
+  border-color: #555;
+}
+body.dark .button > div:hover {
+  background-color: hsl(3, 71%, 56%);
+  color: hsl(227, 75%, 14%);
+  border-color: hsl(3, 71%, 56%);
+}
+.button > div {
+  padding: 5px 10px 5px 10px;
+}
+.button > div,
+.button > div.active {
+  padding: 8px 16px;  /* aumenta espaço interno */
+  border-radius: 15px;
+  cursor: pointer;
+}
+.switch {
+  width: 50px;   /* mais largo */
+  height: 28px;  /* mais alto */
+}
+
+.slider:before {
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+}
+.button > div,
+.button > div.active {
+  padding: 8px 18px;
   border-radius: 15px;
   background-color: hsl(200, 60%, 99%);
-  padding: 5px 10px 5px 10px;
   border: solid hsl(0, 0%, 78%) 1px;
+  cursor: pointer;
+  user-select: none;
 }
 
 .button > div.active {
   background-color: hsl(3, 77%, 44%);
   color: white;
 }
+
+/* ---------- HEADER ---------- */
+header {
+  background-color: hsl(200, 60%, 99%);
+  width: 85%;
+  margin: 20px auto 0;
+  border-radius: 10px;
+  padding: 8px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.moon {
+  background-color: hsl(0, 0%, 78%);
+  border-radius: 10px;
+  padding: 7px;
+  cursor: pointer;
+}
+
+/* ---------- TÍTULO E FILTROS ---------- */
+.header {
+  margin: 40px auto 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+}
+
 #header {
   font-family: buceta;
   font-size: 25px;
 }
-.content {
-  margin-top: 10px;
-  padding: 20px;
-  width: 85%;
-  height: auto;
+
+/* Botões filtro */
+.button {
+  display: flex;
+}
+
+.button button {
+  margin-left: 10px;
+  border-radius: 20px;
+  background-color: hsl(200, 60%, 99%);
+  padding: 6px 16px;
+  border: 1px solid hsl(0, 0%, 78%);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.button button.active {
+  background-color: hsl(3, 77%, 44%);
+  color: white;
+  border: none;
+}
+
+/* ---------- GRID DE EXTENSÕES ---------- */
+.body {
   display: grid;
-  grid-template-columns: 20% 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px; /* espaçamento entre os cards */
+  width: 85%;
+  margin: auto;
+  margin-bottom: 5%;
+}
+
+/* Cada card */
+.content {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  grid-template-rows: auto auto;
   background-color: hsl(200, 60%, 99%);
   border-radius: 15px;
-  margin-left: 10px;
-  margin-right: 10px;
+  gap: 10px;
+  align-items: center;
 }
+
+/* Conteúdo de texto */
+.conteudo h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.conteudo p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: hsl(210, 10%, 40%);
+}
+
+/* Botões Remove e Toggle */
 .item3 {
-  grid-column: span 2; /* faz ocupar as duas colunas */
+  grid-column: span 2;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0;
+  margin-top: 10px;
 }
-h2 {
-  margin: 0;
-}
-p {
-  margin: 5px;
-}
+
 .remove {
   border-radius: 15px;
   border: 1px solid hsl(0, 0%, 78%);
-  padding: 5px 10px 5px 10px;
-  margin-bottom: 5px;
+  padding: 5px 12px;
+  background: white;
+  cursor: pointer;
 }
+
+/* ---------- SWITCH (toggle) ---------- */
 .switch {
   position: relative;
   display: inline-block;
-  width: 42px; /* largura do botão */
-  height: 22px; /* altura do botão */
+  width: 42px;
+  height: 22px;
 }
 
-/* Esconde o input */
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-/* Trilho (track) do botão */
+/* Trilha */
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc; /* cinza quando desligado */
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: hsl(0, 0%, 78%);
   transition: 0.3s;
   border-radius: 22px;
 }
 
-/* Bolinha branca */
+/* Bolinha */
 .slider:before {
   position: absolute;
   content: "";
@@ -143,12 +246,14 @@ p {
   border-radius: 50%;
 }
 
-/* Quando está ativo */
+/* Ativo */
 .switch input:checked + .slider {
-  background-color: hsl(3, 77%, 44%); /* vermelho */
+  background-color: hsl(3, 77%, 44%);
 }
 
-/* Move a bolinha para a direita */
 .switch input:checked + .slider:before {
   transform: translateX(20px);
 }
+
+/* ---------- ÍCONES COM FUNDO ---------- */
+
